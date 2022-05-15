@@ -24,7 +24,7 @@ public class Estoque {
 
     private Date ultimaatualizacao;
 
-    @OneToOne
+    @OneToOne // FIXME: mudar para @ManyToOne
     private Galpao galpoes;
 
 //    @ManyToMany

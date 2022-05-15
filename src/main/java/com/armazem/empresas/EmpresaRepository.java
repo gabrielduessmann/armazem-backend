@@ -16,16 +16,16 @@ public interface EmpresaRepository extends CrudRepository<Empresa, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO empresa VALUES (:id, :cnpj, :nome, :endereco)", nativeQuery = true)
-    public void criarEmpresa(@Param("id") UUID id, @Param("cnpj") String cnpj, @Param("nome") String nome, @Param("endereco") Endereco endereco);
+    @Query(value = "INSERT INTO empresa VALUES (:id, :cnpj, :nome, :enderecoId)", nativeQuery = true)
+    public void criarEmpresa(@Param("id") UUID id, @Param("cnpj") String cnpj, @Param("nome") String nome, @Param("enderecoId") UUID enderecoId);
 
     @Query(value = "SELECT * FROM empresa", nativeQuery = true)
     public ArrayList<Empresa> listarEmpresas();
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE empresa SET cnpj = :cnpj, nome = :nome, endereco = :endereco WHERE id = :id", nativeQuery = true)
-    public void editarEmpresa(@Param("id") UUID id, @Param("cnpj") String cnpj, @Param("nome") String nome, @Param("endereco") Endereco endereco);
+    @Query(value = "UPDATE empresa SET cnpj = :cnpj, nome = :nome, endereco_id = :enderecoId WHERE id = :id", nativeQuery = true)
+    public void editarEmpresa(@Param("id") UUID id, @Param("cnpj") String cnpj, @Param("nome") String nome, @Param("enderecoId") UUID enderecoId);
 
     @Transactional
     @Modifying

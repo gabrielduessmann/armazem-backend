@@ -1,5 +1,6 @@
 package com.armazem.galpoes;
 
+import com.armazem.galpoes.dto.GalpaoCriarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -10,16 +11,16 @@ public class GalpaoService {
     @Autowired
     private GalpaoRepository galpaoRepository;
 
-    public void criarGalpao(Galpao galpao) {
-        galpaoRepository.criarGalpao(UUID.randomUUID(), galpao.getCodigo(), galpao.getCapacidade(), galpao.getEndereco().getId());
+    public void criarGalpao(GalpaoCriarDto galpao) {
+        galpaoRepository.criarGalpao(UUID.randomUUID(), galpao.codigo, galpao.capacidade, galpao.enderecoId);
     }
 
     public ArrayList<Galpao> listarGalpoes() {
         return galpaoRepository.listarGalpoes();
     }
 
-    public void editarGalpao(Galpao galpao) {
-        galpaoRepository.editarGalpao(UUID.randomUUID(), galpao.getCodigo(), galpao.getCapacidade(), galpao.getEndereco().getId());
+    public void editarGalpao(UUID id, GalpaoCriarDto galpao) {
+        galpaoRepository.editarGalpao(id, galpao.codigo, galpao.capacidade, galpao.enderecoId);
     }
 
 

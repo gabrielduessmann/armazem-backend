@@ -1,5 +1,6 @@
 package com.armazem.empresas;
 
+import com.armazem.empresas.dto.EmpresaCriarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -11,18 +12,17 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public void criarEmpresa(Empresa empresa) {
-        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.getCnpj(), empresa.getNome(), empresa.getEndereco());
+    public void criarEmpresa(EmpresaCriarDto empresa) {
+        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.cnpj, empresa.nome, empresa.enderecoId);
     }
 
     public ArrayList<Empresa> listarEmpresas() {
         return empresaRepository.listarEmpresas();
     }
 
-    public void editarEmpresa(Empresa empresa) {
-        empresaRepository.editarEmpresa(UUID.randomUUID(), empresa.getCnpj(), empresa.getNome(), empresa.getEndereco());
+    public void editarEmpresa(UUID id, EmpresaCriarDto empresa) {
+        empresaRepository.editarEmpresa(id, empresa.cnpj, empresa.nome, empresa.enderecoId);
     }
-
 
     public void deletarEmpresa(UUID id) {
         empresaRepository.deletarEmpresa(id);
