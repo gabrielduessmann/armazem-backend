@@ -13,7 +13,13 @@ public class Endereco {
     @GeneratedValue
     private UUID id;
 
-    private Integer cep;
+    private String cidade;
+
+    private String bairro;
+
+    private String rua;
+
+    private Integer numero;
 
     private String complemento;
 }

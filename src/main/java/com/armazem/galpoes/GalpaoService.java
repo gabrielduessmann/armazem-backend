@@ -11,7 +11,6 @@ public class GalpaoService {
     private GalpaoRepository galpaoRepository;
 
     public void criarGalpao(Galpao galpao) {
-        System.out.println(galpao);
         galpaoRepository.criarGalpao(UUID.randomUUID(), galpao.getCodigo(), galpao.getCapacidade(), galpao.getEndereco().getId());
     }
 
