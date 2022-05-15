@@ -1,5 +1,6 @@
 package com.armazem.estoques;
 
+import com.armazem.empresas.Empresa;
 import com.armazem.galpoes.Galpao;
 import com.armazem.produtos.Produto;
 import lombok.Data;
@@ -8,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -24,9 +25,12 @@ public class Estoque {
 
     private Date ultimaatualizacao;
 
-    @OneToOne // FIXME: mudar para @ManyToOne
-    private Galpao galpoes;
+    @ManyToOne
+    private Galpao galpao;
 
-//    @ManyToMany
-//    private Set<Produto> produtos;
+    @ManyToOne
+    private Empresa empresa;
+
+    @ManyToMany
+    private Set<Produto> produtos;
 }
