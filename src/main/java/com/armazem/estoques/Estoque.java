@@ -31,6 +31,6 @@ public class Estoque {
     @ManyToOne
     private Empresa empresa;
 
-    @ManyToMany
-    private Set<Produto> produtos;
+//    @OneToMany(mappedBy = "estoque")
+//    private Set<Produto> produtos;
 }
