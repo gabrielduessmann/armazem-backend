@@ -10,7 +10,7 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="estoque_produto")
@@ -30,5 +30,5 @@ public class EstoqueProduto {
     private Integer quantidade;
 
     @Column(nullable = false)
-    private Date ultimaatualizacao;
+    private LocalDate ultimaatualizacao;
 }

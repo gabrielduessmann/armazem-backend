@@ -22,7 +22,7 @@ public interface EstoqueRepository extends CrudRepository<Estoque, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE estoque SET setor = :setor, galpao_id = :galpaoId, empresa_id = :empresaID WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE estoque SET setor = :setor, galpao_id = :galpaoId, empresa_id = :empresaId WHERE id = :id", nativeQuery = true)
     public void editarEstoque(@Param("id") UUID id, @Param("setor") String setor, @Param("galpaoId") UUID galpaoId, @Param("empresaId") UUID empresaId);
 
     @Transactional
