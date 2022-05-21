@@ -20,7 +20,8 @@ public interface AlocacaoRepository extends CrudRepository<Alocacao, UUID> {
     public void adicionarAlocacao(@Param("id") UUID id, @Param("estoqueId") UUID estoqueId, @Param("empresaId") UUID empresaId, @Param("dataInicial") LocalDate dataInicial, @Param("dataFinal") LocalDate dataFinal);
 
     @Query(
-            value = "SELECT CAST(a.alocacao_id AS VARCHAR) AS alocacaoid, g.nome AS nomegalpao, es.setor AS setorestoque, e.nome AS nomeempresa, a.datainicial, a.datafinal FROM alocacao a \n" +
+            value = "SELECT CAST(a.alocacao_id AS VARCHAR) AS alocacaoid, g.nome AS nomegalpao, es.setor AS setorestoque, e.nome AS nomeempresa, a.datainicial, a.datafinal " +
+                    "FROM alocacao a \n" +
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id \n" +
                     "JOIN galpao g ON es.galpao_galpao_id = g.galpao_id;",
