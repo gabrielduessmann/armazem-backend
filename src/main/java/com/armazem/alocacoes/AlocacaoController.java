@@ -1,6 +1,7 @@
 package com.armazem.alocacoes;
 
 import com.armazem.alocacoes.dto.AlocacaoAdicionarDto;
+import com.armazem.alocacoes.dto.AlocacaoListarDto;
 import com.armazem.empresas.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class AlocacaoController {
     }
 
     @GetMapping(ALOCACOES_URL+"/listar")
-    public ResponseEntity<ArrayList<Empresa>> listarAlocacoes() {
+    public ResponseEntity<ArrayList<AlocacaoListarDto>> listarAlocacoes() {
         return ResponseEntity.ok(alocacaoService.listarAlocacoes());
     }
 

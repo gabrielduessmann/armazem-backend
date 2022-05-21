@@ -24,7 +24,7 @@ public class Estoque {
     private Integer capacidade;
 
     @ManyToOne
-    private Galpao galpao;
+    private Galpao galpao; // FIXME rever nome: galpao_galpao_id
 
 //    @ManyToOne
 //    private Empresa empresa;
