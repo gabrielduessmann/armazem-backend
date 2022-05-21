@@ -12,7 +12,7 @@ public class GalpaoService {
     private GalpaoRepository galpaoRepository;
 
     public void criarGalpao(GalpaoCriarDto galpao) {
-        galpaoRepository.criarGalpao(UUID.randomUUID(), galpao.codigo, galpao.capacidade, galpao.enderecoId);
+        galpaoRepository.criarGalpao(UUID.randomUUID(), galpao.nome, galpao.descricao, galpao.enderecoId);
     }
 
     public ArrayList<Galpao> listarGalpoes() {
@@ -20,7 +20,7 @@ public class GalpaoService {
     }
 
     public void editarGalpao(UUID id, GalpaoCriarDto galpao) {
-        galpaoRepository.editarGalpao(id, galpao.codigo, galpao.capacidade, galpao.enderecoId);
+        galpaoRepository.editarGalpao(id, galpao.nome, galpao.descricao, galpao.enderecoId);
     }
 
 

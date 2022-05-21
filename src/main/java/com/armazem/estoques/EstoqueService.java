@@ -3,7 +3,6 @@ package com.armazem.estoques;
 import com.armazem.estoques.dto.EstoqueCriarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -14,7 +13,7 @@ public class EstoqueService {
     private EstoqueRepository estoqueRepository;
 
     public void criarEstoque(EstoqueCriarDto estoque) {
-        estoqueRepository.criarEstoque(UUID.randomUUID(), estoque.setor, estoque.galpaoId, estoque.empresaId);
+        estoqueRepository.criarEstoque(UUID.randomUUID(), estoque.setor, estoque.capacidade, estoque.galpaoId);
     }
 
     public ArrayList<Estoque> listarEstoques() {
@@ -22,7 +21,7 @@ public class EstoqueService {
     }
 
     public void editarEstoque(UUID id, EstoqueCriarDto estoque) {
-        estoqueRepository.editarEstoque(id, estoque.setor, estoque.galpaoId, estoque.empresaId);
+        estoqueRepository.editarEstoque(id, estoque.setor, estoque.capacidade, estoque.galpaoId);
     }
 
     public void deletarEstoque(UUID id) {

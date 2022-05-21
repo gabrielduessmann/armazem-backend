@@ -15,7 +15,7 @@ public interface ArmazenamentoRepository extends CrudRepository<Armazenamento, U
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO estoque_produto VALUES (:estoqueId, :produtoId, :quantidade, :ultimaAtualizacao)", nativeQuery = true)
-    public void adicionarEstoqueProduto(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
+    public void adicionarArmazenamento(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
 
 //    @Query(value = "SELECT * FROM empresa", nativeQuery = true)
 //    public ArrayList<Empresa> listarEmpresas();
@@ -23,10 +23,10 @@ public interface ArmazenamentoRepository extends CrudRepository<Armazenamento, U
     @Transactional
     @Modifying
     @Query(value = "UPDATE empresa SET quantidade = :quantidade, ultimaatualizacao = :ultimaAtualizacao WHERE estoque_id = :estoqueId AND produto_id = :produtoId", nativeQuery = true)
-    public void editarEstoqueProduto(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
+    public void editarArmazenamento(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
 
     @Transactional
     @Modifying
     @Query(value = "DELETE FROM estoque_produto WHERE estoque_id = :estoqueId AND produto_id = :produtoId", nativeQuery = true)
-    public void deletarEstoqueProduto(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId);
+    public void deletarArmazenamento(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId);
 }

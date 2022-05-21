@@ -20,11 +20,14 @@ public class Estoque {
 
     private String setor;
 
+    @Column(nullable = false)
+    private Integer capacidade;
+
     @ManyToOne
     private Galpao galpao;
 
-    @ManyToOne
-    private Empresa empresa;
+//    @ManyToOne
+//    private Empresa empresa;
 
 //    @OneToMany(mappedBy = "estoque")
 //    private Set<Produto> produtos;

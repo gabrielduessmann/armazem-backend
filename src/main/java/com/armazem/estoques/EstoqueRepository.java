@@ -14,16 +14,16 @@ public interface EstoqueRepository extends CrudRepository<Estoque, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO estoque VALUES (:id, :setor, :galpaoId, :empresaId)", nativeQuery = true)
-    public void criarEstoque(@Param("id") UUID id, @Param("setor") String setor, @Param("galpaoId") UUID galpaoId, @Param("empresaId") UUID empresaId);
+    @Query(value = "INSERT INTO estoque VALUES (:id, :setor, :capacidade, :galpaoId)", nativeQuery = true)
+    public void criarEstoque(@Param("id") UUID id, @Param("setor") String setor, @Param("capacidade") Integer capacidade, @Param("galpaoId") UUID galpaoId);
 
     @Query(value = "SELECT * FROM estoque", nativeQuery = true)
     public ArrayList<Estoque> listarEstoques();
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE estoque SET setor = :setor, galpao_id = :galpaoId, empresa_id = :empresaId WHERE estoque_id = :id", nativeQuery = true)
-    public void editarEstoque(@Param("id") UUID id, @Param("setor") String setor, @Param("galpaoId") UUID galpaoId, @Param("empresaId") UUID empresaId);
+    @Query(value = "UPDATE estoque SET setor = :setor, capacidade = :capacidade, galpao_id = :galpaoId WHERE estoque_id = :id", nativeQuery = true)
+    public void editarEstoque(@Param("id") UUID id, @Param("setor") String setor, @Param("capacidade") Integer capacidade, @Param("galpaoId") UUID galpaoId);
 
     @Transactional
     @Modifying

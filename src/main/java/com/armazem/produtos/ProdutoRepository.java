@@ -1,6 +1,5 @@
 package com.armazem.produtos;
 
-import com.armazem.empresas.Empresa;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

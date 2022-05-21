@@ -1,6 +1,5 @@
 package com.armazem.galpoes;
 
-import com.armazem.empresas.Empresa;
 import com.armazem.enderecos.Endereco;
 import lombok.Data;
 import javax.persistence.Column;

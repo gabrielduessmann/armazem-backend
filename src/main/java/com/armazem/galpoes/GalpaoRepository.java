@@ -15,16 +15,16 @@ public interface GalpaoRepository extends CrudRepository<Galpao, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO galpao VALUES (:id, :codigo, :capacidade, :enderecoId)", nativeQuery = true)
-    public void criarGalpao(@Param("id") UUID id, @Param("codigo") String codigo, @Param("capacidade") Integer capacidade, @Param("enderecoId") UUID enderecoId);
+    @Query(value = "INSERT INTO galpao VALUES (:id, :nome, :descricao, :enderecoId)", nativeQuery = true)
+    public void criarGalpao(@Param("id") UUID id, @Param("nome") String nome, @Param("descricao") String descricao, @Param("enderecoId") UUID enderecoId);
 
     @Query(value = "SELECT * FROM galpao", nativeQuery = true)
     public ArrayList<Galpao> listarGalpoes();
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE galpao SET codigo = :codigo, capacidade = :capacidade, endereco_id = :enderecoId WHERE galpao_id = :id", nativeQuery = true)
-    public void editarGalpao(@Param("id") UUID id, @Param("codigo") String codigo, @Param("capacidade") Integer capacidade, @Param("enderecoId") UUID enderecoId);
+    @Query(value = "UPDATE galpao SET nome = :nome, descricao = :descricao, endereco_id = :enderecoId WHERE galpao_id = :id", nativeQuery = true)
+    public void editarGalpao(@Param("id") UUID id, @Param("nome") String nome, @Param("descricao") String descricao, @Param("enderecoId") UUID enderecoId);
 
     @Transactional
     @Modifying

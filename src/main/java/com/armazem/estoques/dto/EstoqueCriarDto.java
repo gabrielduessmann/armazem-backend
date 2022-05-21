@@ -5,7 +5,7 @@ import java.util.UUID;
 public class EstoqueCriarDto {
     public String setor;
 
-    public UUID galpaoId;
+    public Integer capacidade;
 
-    public UUID empresaId;
+    public UUID galpaoId;
 }

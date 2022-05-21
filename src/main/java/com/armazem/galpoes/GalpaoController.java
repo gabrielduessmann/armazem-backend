@@ -1,5 +1,6 @@
 package com.armazem.galpoes;
 
+import com.armazem.estoques.EstoqueService;
 import com.armazem.galpoes.dto.GalpaoCriarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class GalpaoController {
 
     @Autowired
     private GalpaoService galpaoService;
+
+    @Autowired
+    private EstoqueService estoqueService;
 
     final String GALPOES_URL = "galpoes";
 

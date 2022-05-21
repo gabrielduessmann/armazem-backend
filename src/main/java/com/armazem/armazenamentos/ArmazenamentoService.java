@@ -1,6 +1,6 @@
 package com.armazem.armazenamentos;
 
-import com.armazem.armazenamentos.dto.EstoqueProdutoAdicionarDto;
+import com.armazem.armazenamentos.dto.ArmazenamentoAdicionarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -12,21 +12,21 @@ public class ArmazenamentoService {
     @Autowired
     private ArmazenamentoRepository armazenamentoRepository;
 
-    public void adicionarEstoqueProduto(EstoqueProdutoAdicionarDto estoqueProduto) {
+    public void adicionarArmazenamento(ArmazenamentoAdicionarDto armazenamento) {
         LocalDate dataAtual = LocalDate.now();
-        armazenamentoRepository.adicionarEstoqueProduto(estoqueProduto.estoqueId, estoqueProduto.produtoId, estoqueProduto.quantidade, dataAtual);
+        armazenamentoRepository.adicionarArmazenamento(armazenamento.estoqueId, armazenamento.produtoId, armazenamento.quantidade, dataAtual);
     }
 
 //    public ArrayList<Estoque> listarEstoques() {
 //        return estoqueProdutoRepository.();
 //    }
 
-    public void editarEstoque(EstoqueProdutoAdicionarDto estoqueProduto) {
+    public void editarArmazenamento(ArmazenamentoAdicionarDto armazenamento) {
         LocalDate dataAtual = LocalDate.now();
-        armazenamentoRepository.editarEstoqueProduto(estoqueProduto.estoqueId, estoqueProduto.produtoId, estoqueProduto.quantidade, dataAtual);
+        armazenamentoRepository.editarArmazenamento(armazenamento.estoqueId, armazenamento.produtoId, armazenamento.quantidade, dataAtual);
     }
 
-    public void deletarEstoqueProduto(UUID estoqueId, UUID produtoID) {
-        armazenamentoRepository.deletarEstoqueProduto(estoqueId, produtoID);
+    public void deletarArmazenamento(UUID estoqueId, UUID produtoID) {
+        armazenamentoRepository.deletarArmazenamento(estoqueId, produtoID);
     }
 }
