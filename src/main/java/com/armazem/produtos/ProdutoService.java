@@ -14,7 +14,7 @@ public class ProdutoService {
     private ProdutoRepository produtoRepository;
 
     public void criarProduto(Produto produto) {
-        produtoRepository.criaProduto(UUID.randomUUID(), produto.getNome(), produto.getDescricao(), produto.getPrecocompra());
+        produtoRepository.criaProduto(UUID.randomUUID(), produto.getNome(), produto.getDescricao());
     }
 
     public ArrayList<Produto> listarProdutos() {
@@ -22,7 +22,7 @@ public class ProdutoService {
     }
 
     public void editarProduto(UUID id, Produto produto) {
-        produtoRepository.editarProduto(id, produto.getNome(), produto.getDescricao(), produto.getPrecocompra());
+        produtoRepository.editarProduto(id, produto.getNome(), produto.getDescricao());
     }
 
     public void deletarProduto(UUID id) {

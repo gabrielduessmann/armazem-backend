@@ -1,6 +1,5 @@
 package com.armazem.empresas;
 
-import com.armazem.enderecos.Endereco;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -24,12 +23,12 @@ public interface EmpresaRepository extends CrudRepository<Empresa, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE empresa SET cnpj = :cnpj, nome = :nome, endereco_id = :enderecoId WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE empresa SET cnpj = :cnpj, nome = :nome, endereco_id = :enderecoId WHERE empresa_id = :id", nativeQuery = true)
     public void editarEmpresa(@Param("id") UUID id, @Param("cnpj") String cnpj, @Param("nome") String nome, @Param("enderecoId") UUID enderecoId);
 
     @Transactional
     @Modifying
-    @Query(value = "DELETE FROM empresa WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM empresa WHERE empresa_id = :id", nativeQuery = true)
     public void deletarEmpresa(@Param("id") UUID id);
 
 }

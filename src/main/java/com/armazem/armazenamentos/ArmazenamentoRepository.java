@@ -1,4 +1,4 @@
-package com.armazem.estoques_produtos;
+package com.armazem.armazenamentos;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Repository
-public interface EstoqueProdutoRepository extends CrudRepository<EstoqueProduto, UUID> {
+public interface ArmazenamentoRepository extends CrudRepository<Armazenamento, UUID> {
 
     @Transactional
     @Modifying

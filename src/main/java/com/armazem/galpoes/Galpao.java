@@ -15,12 +15,13 @@ import java.util.UUID;
 public class Galpao {
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID galpaoId;
 
-    private String codigo;
+    @Column(nullable = false)
+    private String nome;
 
-    private Integer capacidade;
+    private String descricao;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private Endereco endereco;
 }

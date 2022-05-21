@@ -1,7 +1,7 @@
-package com.armazem.estoques_produtos;
+package com.armazem.armazenamentos;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class EstoqueProdutoController {
+public class ArmazenamentoController {
 }

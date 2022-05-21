@@ -1,4 +1,4 @@
-package com.armazem.estoques_produtos.dto;
+package com.armazem.armazenamentos.dto;
 
 import java.util.UUID;
 

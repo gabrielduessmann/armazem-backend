@@ -22,11 +22,11 @@ public interface EnderecoRepository extends CrudRepository<Endereco, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE endereco SET cidade = :cidade, bairro = :bairro, rua = :rua, numero = :numero, complemento = :complemento WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE endereco SET cidade = :cidade, bairro = :bairro, rua = :rua, numero = :numero, complemento = :complemento WHERE endereco_id = :id", nativeQuery = true)
     public void editarEndereco(@Param("id") UUID id, @Param("cidade") String cidade, @Param("bairro") String bairro, @Param("rua") String rua, @Param("numero") Integer numero, @Param("complemento") String complemento);
 
     @Transactional
     @Modifying
-    @Query(value = "DELETE FROM endereco WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM endereco WHERE endereco_id = :id", nativeQuery = true)
     public void deletarEndereco(@Param("id") UUID id);
 }

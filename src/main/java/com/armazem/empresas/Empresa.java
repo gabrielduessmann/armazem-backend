@@ -15,9 +15,9 @@ import java.util.UUID;
 public class Empresa {
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID empresaId;
 
-    // ver se aceitar BigInterger como tipo para coluna
+    @Column(nullable = false)
     private String cnpj;
 
     @Column(nullable = false)

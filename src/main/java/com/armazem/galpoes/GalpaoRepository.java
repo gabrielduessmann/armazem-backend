@@ -23,11 +23,11 @@ public interface GalpaoRepository extends CrudRepository<Galpao, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE galpao SET codigo = :codigo, capacidade = :capacidade, endereco_id = :enderecoId WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE galpao SET codigo = :codigo, capacidade = :capacidade, endereco_id = :enderecoId WHERE galpao_id = :id", nativeQuery = true)
     public void editarGalpao(@Param("id") UUID id, @Param("codigo") String codigo, @Param("capacidade") Integer capacidade, @Param("enderecoId") UUID enderecoId);
 
     @Transactional
     @Modifying
-    @Query(value = "DELETE FROM galpao WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM galpao WHERE galpao_id = :id", nativeQuery = true)
     public void deletarGalpao(@Param("id") UUID id);
 }

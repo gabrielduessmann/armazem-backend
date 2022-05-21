@@ -1,11 +1,11 @@
-package com.armazem.estoques_produtos;
+package com.armazem.armazenamentos;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
 
 @Embeddable
-public class EstoqueProdutoPK implements Serializable {
+public class ArmazenamentoPKs implements Serializable {
     private UUID estoque;
 
     private UUID produto;
