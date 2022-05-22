@@ -36,7 +36,7 @@ public class GalpaoController {
         return ResponseEntity.ok(galpaoService.listarGalpoes());
     }
 
-    @GetMapping(GALPOES_URL+"/listar/{id}")
+    @GetMapping(GALPOES_URL+"/{id}/listar")
     public ResponseEntity<ArrayList<Galpao>> listarGalpoes(@PathVariable UUID id) {
         return ResponseEntity.ok(galpaoService.listarGalpoesPorId());
     }

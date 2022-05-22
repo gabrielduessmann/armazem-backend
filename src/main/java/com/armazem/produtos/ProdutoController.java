@@ -32,6 +32,11 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoService.listarProdutos());
     }
 
+    @GetMapping(PRODUTOS_URL+"/{id}/listar")
+    public ResponseEntity<ArrayList<Produto>> listarProdutosPorId(@PathVariable UUID id) {
+        return ResponseEntity.ok(produtoService.listarProdutosPorId(id));
+    }
+
     @PostMapping(PRODUTOS_URL+"/{id}/editar")
     public ResponseEntity<Void> editarProduto(@PathVariable UUID id, @RequestBody Produto produto) {
         produtoService.editarProduto(id, produto);

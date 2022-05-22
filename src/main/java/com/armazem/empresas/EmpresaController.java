@@ -31,6 +31,11 @@ public class EmpresaController {
         return ResponseEntity.ok(empresaService.listarEmpresas());
     }
 
+    @GetMapping(EMPRESAS_URL+"/{id}/listar")
+    public ResponseEntity<ArrayList<Empresa>> listarEmpresasPorId(@PathVariable UUID id) {
+        return ResponseEntity.ok(empresaService.listarEmpresasPorId(id));
+    }
+
     @PostMapping(EMPRESAS_URL+"/{id}/editar")
     public ResponseEntity<Void> editarEmpresa(@PathVariable UUID id, @RequestBody EmpresaCriarDto empresa) {
         empresaService.editarEmpresa(id, empresa);

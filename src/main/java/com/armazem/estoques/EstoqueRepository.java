@@ -20,6 +20,9 @@ public interface EstoqueRepository extends CrudRepository<Estoque, UUID> {
     @Query(value = "SELECT * FROM estoque", nativeQuery = true)
     public ArrayList<Estoque> listarEstoques();
 
+    @Query(value = "SELECT * FROM estoque WHERE estoque_id = :id", nativeQuery = true)
+    public ArrayList<Estoque> listarEstoquesPorId(@Param("id") UUID id);
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE estoque SET setor = :setor, capacidade = :capacidade, galpao_id = :galpaoId WHERE estoque_id = :id", nativeQuery = true)

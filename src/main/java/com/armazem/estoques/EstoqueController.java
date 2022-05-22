@@ -32,6 +32,11 @@ public class EstoqueController {
         return ResponseEntity.ok(estoqueService.listarEstoques());
     }
 
+    @GetMapping(ESTOQUES_URL+"/{id}/listar")
+    public ResponseEntity<ArrayList<Estoque>> listarEmpresasPorId(@PathVariable UUID id) {
+        return ResponseEntity.ok(estoqueService.listarEstoquesPorId(id));
+    }
+
     @PostMapping(ESTOQUES_URL+"/{id}/editar")
     public ResponseEntity<Void> editarEmpresa(@PathVariable UUID id, @RequestBody EstoqueCriarDto estoque) {
         estoqueService.editarEstoque(id, estoque);

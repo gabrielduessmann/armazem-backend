@@ -24,6 +24,11 @@ public class AlocacaoService {
         return convertToAlocacaoListarDto(tuplas);
     }
 
+    public ArrayList<AlocacaoListarDto> listarAlocacoesPorId(UUID id) {
+        ArrayList<Tuple> tuplas = alocacaoRepository.listarAlocacoesPorId(id);
+        return convertToAlocacaoListarDto(tuplas);
+    }
+
     public void editarAlocacao(UUID id, AlocacaoAdicionarDto alocacao) {
         alocacaoRepository.editarAlocacao(id, alocacao.estoqueId, alocacao.empresaId, alocacao.dataInicial, alocacao.dataFinal);
     }

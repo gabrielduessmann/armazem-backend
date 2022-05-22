@@ -28,6 +28,16 @@ public interface AlocacaoRepository extends CrudRepository<Alocacao, UUID> {
             nativeQuery = true)
     public ArrayList<Tuple> listarAlocacoes();
 
+    @Query(
+            value = "SELECT CAST(a.alocacao_id AS VARCHAR) AS alocacaoid, g.nome AS nomegalpao, es.setor AS setorestoque, e.nome AS nomeempresa, a.datainicial, a.datafinal " +
+                    "FROM alocacao a \n" +
+                    "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
+                    "JOIN estoque es ON a.estoque_id = es.estoque_id \n" +
+                    "JOIN galpao g ON es.galpao_galpao_id = g.galpao_id" +
+                    "WHERE alocacao_id = :id",
+            nativeQuery = true)
+    public ArrayList<Tuple> listarAlocacoesPorId(@Param("id") UUID id);
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE alocacao SET estoque_id = :estoqueId, empresa_id = :empresaId, datainicial = :dataInicial, datafinal = :dataFinal WHERE alocacao_id = :id", nativeQuery = true)

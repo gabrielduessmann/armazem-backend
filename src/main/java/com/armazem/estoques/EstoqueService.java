@@ -20,6 +20,10 @@ public class EstoqueService {
         return estoqueRepository.listarEstoques();
     }
 
+    public ArrayList<Estoque> listarEstoquesPorId(UUID id) {
+        return estoqueRepository.listarEstoquesPorId(id);
+    }
+
     public void editarEstoque(UUID id, EstoqueCriarDto estoque) {
         estoqueRepository.editarEstoque(id, estoque.setor, estoque.capacidade, estoque.galpaoId);
     }

@@ -20,6 +20,9 @@ public interface EmpresaRepository extends CrudRepository<Empresa, UUID> {
     @Query(value = "SELECT * FROM empresa", nativeQuery = true)
     public ArrayList<Empresa> listarEmpresas();
 
+    @Query(value = "SELECT * FROM empresa WHERE empresa_id = :id", nativeQuery = true)
+    public ArrayList<Empresa> listarEmpresasPorId(@Param("id") UUID id);
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE empresa SET cnpj = :cnpj, nome = :nome WHERE empresa_id = :id", nativeQuery = true)

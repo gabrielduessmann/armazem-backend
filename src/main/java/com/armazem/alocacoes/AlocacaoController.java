@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -32,6 +31,11 @@ public class AlocacaoController {
     @GetMapping(ALOCACOES_URL+"/listar")
     public ResponseEntity<ArrayList<AlocacaoListarDto>> listarAlocacoes() {
         return ResponseEntity.ok(alocacaoService.listarAlocacoes());
+    }
+
+    @GetMapping(ALOCACOES_URL+"/{id}/listar")
+    public ResponseEntity<ArrayList<AlocacaoListarDto>> listarAlocacoesPorId(@PathVariable UUID id) {
+        return ResponseEntity.ok(alocacaoService.listarAlocacoesPorId(id));
     }
 
     @PostMapping(ALOCACOES_URL+"/{id}/editar")

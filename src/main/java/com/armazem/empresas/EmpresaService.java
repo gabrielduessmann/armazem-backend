@@ -20,6 +20,10 @@ public class EmpresaService {
         return empresaRepository.listarEmpresas();
     }
 
+    public ArrayList<Empresa> listarEmpresasPorId(UUID id) {
+        return empresaRepository.listarEmpresasPorId(id);
+    }
+
     public void editarEmpresa(UUID id, EmpresaCriarDto empresa) {
         empresaRepository.editarEmpresa(id, empresa.cnpj, empresa.nome);
     }

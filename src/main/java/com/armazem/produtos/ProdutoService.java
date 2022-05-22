@@ -21,6 +21,10 @@ public class ProdutoService {
         return produtoRepository.listarProdutos();
     }
 
+    public ArrayList<Produto> listarProdutosPorId(UUID id) {
+        return produtoRepository.listarProdutosPorId(id);
+    }
+
     public void editarProduto(UUID id, Produto produto) {
         produtoRepository.editarProduto(id, produto.getNome(), produto.getDescricao());
     }

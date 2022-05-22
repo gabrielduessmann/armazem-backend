@@ -21,6 +21,9 @@ public interface ProdutoRepository extends CrudRepository<Produto, UUID> {
     @Query(value = "SELECT * FROM produto", nativeQuery = true)
     public ArrayList<Produto> listarProdutos();
 
+    @Query(value = "SELECT * FROM produto WHERE produto_id = :id", nativeQuery = true)
+    public ArrayList<Produto> listarProdutosPorId(@Param("id") UUID id);
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE produto SET nome = :nome, descricao = :descricao WHERE produto_id = :id", nativeQuery = true)
