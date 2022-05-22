@@ -26,7 +26,7 @@ public class GalpaoController {
     final String GALPOES_URL = "galpoes";
 
     @PostMapping(GALPOES_URL+"/criar")
-    public ResponseEntity<Void> criarGalpao(@RequestBody GalpaoCriarDto galpao) {
+    public ResponseEntity<Void> criarGalpao(@RequestBody Galpao galpao) {
         galpaoService.criarGalpao(galpao);
         return ResponseEntity.noContent().build();
     }
@@ -36,8 +36,13 @@ public class GalpaoController {
         return ResponseEntity.ok(galpaoService.listarGalpoes());
     }
 
+    @GetMapping(GALPOES_URL+"/listar/{id}")
+    public ResponseEntity<ArrayList<Galpao>> listarGalpoes(@PathVariable UUID id) {
+        return ResponseEntity.ok(galpaoService.listarGalpoesPorId());
+    }
+
     @PostMapping(GALPOES_URL+"/{id}/editar")
-    public ResponseEntity<Void> editarGalpao(@PathVariable UUID id, @RequestBody GalpaoCriarDto galpao) {
+    public ResponseEntity<Void> editarGalpao(@PathVariable UUID id, @RequestBody Galpao galpao) {
         galpaoService.editarGalpao(id, galpao);
         return ResponseEntity.noContent().build();
     }

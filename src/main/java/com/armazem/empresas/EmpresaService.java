@@ -13,7 +13,7 @@ public class EmpresaService {
     private EmpresaRepository empresaRepository;
 
     public void criarEmpresa(EmpresaCriarDto empresa) {
-        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.cnpj, empresa.nome, empresa.enderecoId);
+        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.cnpj, empresa.nome);
     }
 
     public ArrayList<Empresa> listarEmpresas() {
@@ -21,7 +21,7 @@ public class EmpresaService {
     }
 
     public void editarEmpresa(UUID id, EmpresaCriarDto empresa) {
-        empresaRepository.editarEmpresa(id, empresa.cnpj, empresa.nome, empresa.enderecoId);
+        empresaRepository.editarEmpresa(id, empresa.cnpj, empresa.nome);
     }
 
     public void deletarEmpresa(UUID id) {

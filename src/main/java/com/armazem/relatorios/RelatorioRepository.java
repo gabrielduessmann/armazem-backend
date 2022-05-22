@@ -1,7 +1,9 @@
 package com.armazem.relatorios;
 
+import com.armazem.produtos.Produto;
 import com.armazem.relatorios.dto.RelatorioProdutosArmazenadosListagemDto;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 @Repository
-public interface RelatorioRepository {
+public interface RelatorioRepository extends CrudRepository<Produto, UUID> {
     @Query(
             value = "SELECT g.nome AS nomegalpao, es.setor AS setorestoque, p.nome AS nomeproduto, ar.quantidade, ar.ultimaatualizacao \n" +
                     "FROM alocacao a \n" +

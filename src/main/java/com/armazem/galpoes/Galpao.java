@@ -1,12 +1,10 @@
 package com.armazem.galpoes;
 
-import com.armazem.enderecos.Endereco;
 import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import java.util.UUID;
 
 @Data
@@ -21,6 +19,17 @@ public class Galpao {
 
     private String descricao;
 
-    @OneToOne(optional = false)
-    private Endereco endereco;
+    @Column(nullable = false)
+    private String cidade;
+
+    @Column(nullable = false)
+    private String bairro;
+
+    @Column(nullable = false)
+    private String rua;
+
+    @Column(nullable = false)
+    private Integer numero;
+
+    private String complemento;
 }
