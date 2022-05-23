@@ -1,9 +1,9 @@
 package com.armazem.galpoes;
 
 import com.armazem.estoques.EstoqueService;
-import com.armazem.galpoes.dto.GalpaoCriarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.UUID;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController()
 public class GalpaoController {
 
@@ -37,8 +38,8 @@ public class GalpaoController {
     }
 
     @GetMapping(GALPOES_URL+"/{id}/listar")
-    public ResponseEntity<ArrayList<Galpao>> listarGalpoes(@PathVariable UUID id) {
-        return ResponseEntity.ok(galpaoService.listarGalpoesPorId());
+    public ResponseEntity<Galpao> listarGalpoes(@PathVariable UUID id) {
+        return ResponseEntity.ok(galpaoService.listarGalpoesPorId(id));
     }
 
     @PostMapping(GALPOES_URL+"/{id}/editar")

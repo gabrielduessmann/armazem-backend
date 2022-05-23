@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.Tuple;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,14 +23,16 @@ public class ArmazenamentoService {
         armazenamentoRepository.adicionarArmazenamento(armazenamento.estoqueId, armazenamento.produtoId, armazenamento.quantidade, dataAtual);
     }
 
-    public ArrayList<ArmazenamentoListarDto> listarEstoques() {
-        ArrayList<Tuple> tuplas = armazenamentoRepository.listarEstoques();
+    public ArrayList<ArmazenamentoListarDto> listarArmazenamentos() {
+        ArrayList<Tuple> tuplas = armazenamentoRepository.listarArmazenamentos();
         return convertToArmazenamentoListarDto(tuplas);
     }
 
-    public ArrayList<ArmazenamentoListarDto> listarEstoquesPorId(UUID estoqueId, UUID produtoId) {
-        ArrayList<Tuple> tuplas = armazenamentoRepository.listarEstoquesPorId(estoqueId, produtoId);
-        return convertToArmazenamentoListarDto(tuplas);
+    public ArmazenamentoListarDto listarArmazenamentosPorId(UUID estoqueId, UUID produtoId) {
+        Tuple tupla = armazenamentoRepository.listarArmazenamentosPorId(estoqueId, produtoId);
+        return convertToArmazenamentoListarDto(List.of(tupla)).size() == 1 ?
+                convertToArmazenamentoListarDto(List.of(tupla)).get(0) :
+                null;
     }
 
     public void editarArmazenamento(UUID estoqueId, UUID produtoId, ArmazenamentoAdicionarDto armazenamento) {
@@ -41,7 +44,7 @@ public class ArmazenamentoService {
         armazenamentoRepository.deletarArmazenamento(estoqueId, produtoId);
     }
 
-    private ArrayList<ArmazenamentoListarDto> convertToArmazenamentoListarDto(ArrayList<Tuple> tuplas) {
+    private ArrayList<ArmazenamentoListarDto> convertToArmazenamentoListarDto(List<Tuple> tuplas) {
         ArrayList<ArmazenamentoListarDto> armazenamentosDto = new ArrayList<>();
         tuplas.forEach(tupla -> {
             armazenamentosDto.add(

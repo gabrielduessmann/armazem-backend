@@ -23,7 +23,7 @@ public interface GalpaoRepository extends CrudRepository<Galpao, UUID> {
     public ArrayList<Galpao> listarGalpoes();
 
     @Query(value = "SELECT * FROM galpao WHERE galpao_id = :id", nativeQuery = true)
-    public ArrayList<Tuple> listarGalpoesPorId(@Param("id") UUID id);
+    public Galpao listarGalpoesPorId(@Param("id") UUID id);
 
     @Transactional
     @Modifying

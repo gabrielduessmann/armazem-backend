@@ -24,16 +24,16 @@ public interface ArmazenamentoRepository extends CrudRepository<Armazenamento, U
             "FROM armazenamento a\n" +
             "JOIN produto p ON p.produto_id = a.produto_id \n" +
             "JOIN estoque e ON e.estoque_id = a.estoque_id \n" +
-            "JOIN galpao g ON g.galpao_id = e.galpao_galpao_id", nativeQuery = true)
-    public ArrayList<Tuple> listarEstoques();
+            "JOIN galpao g ON g.galpao_id = e.galpao_id", nativeQuery = true)
+    public ArrayList<Tuple> listarArmazenamentos();
 
     @Query(value = "SELECT a.estoque_id AS estoqueid, a.produto_id AS produtoid, g.nome AS nomegalpao, e.setor AS setorestoque, p.nome AS nomeproduto, p.descricao \n" +
             "FROM armazenamento a\n" +
             "JOIN produto p ON p.produto_id = a.produto_id \n" +
             "JOIN estoque e ON e.estoque_id = a.estoque_id \n" +
-            "JOIN galpao g ON g.galpao_id = e.galpao_galpao_id\n" +
+            "JOIN galpao g ON g.galpao_id = e.galpao_id\n" +
             "WHERE a.estoque_id = :estoqueId AND a.produto_id = :produtoId; ", nativeQuery = true)
-    public ArrayList<Tuple> listarEstoquesPorId(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId);
+    public Tuple listarArmazenamentosPorId(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId);
 
     @Transactional
     @Modifying

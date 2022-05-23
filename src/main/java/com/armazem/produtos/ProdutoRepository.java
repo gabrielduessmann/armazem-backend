@@ -22,7 +22,7 @@ public interface ProdutoRepository extends CrudRepository<Produto, UUID> {
     public ArrayList<Produto> listarProdutos();
 
     @Query(value = "SELECT * FROM produto WHERE produto_id = :id", nativeQuery = true)
-    public ArrayList<Produto> listarProdutosPorId(@Param("id") UUID id);
+    public Produto listarProdutosPorId(@Param("id") UUID id);
 
     @Transactional
     @Modifying

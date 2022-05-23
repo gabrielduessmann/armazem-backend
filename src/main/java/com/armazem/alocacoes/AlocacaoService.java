@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.Tuple;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,9 +25,11 @@ public class AlocacaoService {
         return convertToAlocacaoListarDto(tuplas);
     }
 
-    public ArrayList<AlocacaoListarDto> listarAlocacoesPorId(UUID id) {
-        ArrayList<Tuple> tuplas = alocacaoRepository.listarAlocacoesPorId(id);
-        return convertToAlocacaoListarDto(tuplas);
+    public AlocacaoListarDto listarAlocacoesPorId(UUID id) {
+        Tuple tupla = alocacaoRepository.listarAlocacoesPorId(id);
+        return convertToAlocacaoListarDto(List.of(tupla)).size() == 1 ?
+                convertToAlocacaoListarDto(List.of(tupla)).get(0) :
+                null;
     }
 
     public void editarAlocacao(UUID id, AlocacaoAdicionarDto alocacao) {
@@ -38,7 +41,7 @@ public class AlocacaoService {
     }
 
 
-    private ArrayList<AlocacaoListarDto> convertToAlocacaoListarDto(ArrayList<Tuple> tuplas) {
+    private ArrayList<AlocacaoListarDto> convertToAlocacaoListarDto(List<Tuple> tuplas) {
         ArrayList<AlocacaoListarDto> alocacoesDto = new ArrayList<>();
         tuplas.forEach(tupla -> {
             alocacoesDto.add(

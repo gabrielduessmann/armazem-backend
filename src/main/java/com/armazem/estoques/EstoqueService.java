@@ -25,7 +25,7 @@ public class EstoqueService {
         return estoqueRepository.listarEstoques();
     }
 
-    public ArrayList<Estoque> listarEstoquesPorId(UUID id) {
+    public Estoque listarEstoquesPorId(UUID id) {
         return estoqueRepository.listarEstoquesPorId(id);
     }
 

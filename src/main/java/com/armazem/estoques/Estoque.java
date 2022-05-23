@@ -1,13 +1,12 @@
 package com.armazem.estoques;
 
-import com.armazem.empresas.Empresa;
 import com.armazem.galpoes.Galpao;
 import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.UUID;
 
@@ -24,11 +23,7 @@ public class Estoque {
     private Integer capacidade;
 
     @ManyToOne
-    private Galpao galpao; // FIXME rever nome: galpao_galpao_id
+    @JoinColumn(name = "galpao_id")
+    private Galpao galpao;
 
-//    @ManyToOne
-//    private Empresa empresa;
-
-//    @OneToMany(mappedBy = "estoque")
-//    private Set<Produto> produtos;
 }

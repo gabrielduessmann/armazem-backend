@@ -19,7 +19,4 @@ public class Produto {
 
     private String descricao;
 
-
-//    @OneToMany(mappedBy = "produto")
-//    private Set<Estoque> estoques;
 }

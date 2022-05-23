@@ -24,7 +24,7 @@ public interface EstoqueRepository extends CrudRepository<Estoque, UUID> {
     public ArrayList<Estoque> listarEstoques();
 
     @Query(value = "SELECT * FROM estoque WHERE estoque_id = :id", nativeQuery = true)
-    public ArrayList<Estoque> listarEstoquesPorId(@Param("id") UUID id);
+    public Estoque listarEstoquesPorId(@Param("id") UUID id);
 
     @Query(value = "SELECT DISTINCT CAST(e.estoque_id AS VARCHAR) AS estoqueid, e.setor AS setorestoque, g.nome AS nomegalpao \n" +
             "FROM estoque e\n" +

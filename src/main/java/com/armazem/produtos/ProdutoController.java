@@ -33,7 +33,7 @@ public class ProdutoController {
     }
 
     @GetMapping(PRODUTOS_URL+"/{id}/listar")
-    public ResponseEntity<ArrayList<Produto>> listarProdutosPorId(@PathVariable UUID id) {
+    public ResponseEntity<Produto> listarProdutosPorId(@PathVariable UUID id) {
         return ResponseEntity.ok(produtoService.listarProdutosPorId(id));
     }
 

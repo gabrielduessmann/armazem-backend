@@ -18,7 +18,7 @@ public interface RelatorioRepository extends CrudRepository<Produto, UUID> {
                     "FROM alocacao a \n" +
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id \n" +
-                    "JOIN galpao g ON es.galpao_galpao_id = g.galpao_id\n" +
+                    "JOIN galpao g ON es.galpao_id = g.galpao_id\n" +
                     "JOIN armazenamento ar ON es.estoque_id = ar.estoque_id\n" +
                     "JOIN produto p ON ar.produto_id = p.produto_id\n" +
                     "WHERE e.empresa_id = :empresaId;",

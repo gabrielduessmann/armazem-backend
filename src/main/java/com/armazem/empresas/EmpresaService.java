@@ -12,15 +12,15 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public void criarEmpresa(Empresa empresa) {
-        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.getCnpj(), empresa.getNome());
+    public void criarEmpresa(EmpresaCriarDto empresa) {
+        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.cnpj, empresa.nome);
     }
 
     public ArrayList<Empresa> listarEmpresas() {
         return empresaRepository.listarEmpresas();
     }
 
-    public ArrayList<Empresa> listarEmpresasPorId(UUID id) {
+    public Empresa listarEmpresasPorId(UUID id) {
         return empresaRepository.listarEmpresasPorId(id);
     }
 

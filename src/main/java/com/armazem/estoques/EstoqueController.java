@@ -4,6 +4,7 @@ import com.armazem.estoques.dto.EstoqueCriarDto;
 import com.armazem.estoques.dto.EstoquesDisponiveisListarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.UUID;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class EstoqueController {
 
@@ -33,7 +35,7 @@ public class EstoqueController {
     }
 
     @GetMapping(ESTOQUES_URL+"/{id}/listar")
-    public ResponseEntity<ArrayList<Estoque>> listarEstoquesPorId(@PathVariable UUID id) {
+    public ResponseEntity<Estoque> listarEstoquesPorId(@PathVariable UUID id) {
         return ResponseEntity.ok(estoqueService.listarEstoquesPorId(id));
     }
 
@@ -48,7 +50,7 @@ public class EstoqueController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(ESTOQUES_URL+"{id}/remover")
+    @DeleteMapping(ESTOQUES_URL+"/{id}/remover")
     public ResponseEntity<Void> deletarEstoque(@PathVariable UUID id) {
         estoqueService.deletarEstoque(id);
         return ResponseEntity.noContent().build();

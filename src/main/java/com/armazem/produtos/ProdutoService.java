@@ -1,7 +1,5 @@
 package com.armazem.produtos;
 
-import com.armazem.empresas.Empresa;
-import com.armazem.empresas.dto.EmpresaCriarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class ProdutoService {
         return produtoRepository.listarProdutos();
     }
 
-    public ArrayList<Produto> listarProdutosPorId(UUID id) {
+    public Produto listarProdutosPorId(UUID id) {
         return produtoRepository.listarProdutosPorId(id);
     }
 

@@ -1,8 +1,6 @@
 package com.armazem.galpoes;
 
-import com.armazem.galpoes.dto.GalpaoCriarDto;
 import com.armazem.galpoes.dto.GalpaoListarDto;
-import com.armazem.relatorios.dto.RelatorioProdutosArmazenadosListagemDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +21,8 @@ public class GalpaoService {
         return galpaoRepository.listarGalpoes();
     }
 
-    public ArrayList<Galpao> listarGalpoesPorId() {
-        return galpaoRepository.listarGalpoes();
+    public Galpao listarGalpoesPorId(UUID id) {
+        return galpaoRepository.listarGalpoesPorId(id);
     }
 
     public void editarGalpao(UUID id, Galpao galpao) {
