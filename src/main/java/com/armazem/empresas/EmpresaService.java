@@ -12,8 +12,8 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public void criarEmpresa(EmpresaCriarDto empresa) {
-        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.cnpj, empresa.nome);
+    public void criarEmpresa(Empresa empresa) {
+        empresaRepository.criarEmpresa(UUID.randomUUID(), empresa.getCnpj(), empresa.getNome());
     }
 
     public ArrayList<Empresa> listarEmpresas() {
@@ -24,8 +24,8 @@ public class EmpresaService {
         return empresaRepository.listarEmpresasPorId(id);
     }
 
-    public void editarEmpresa(UUID id, EmpresaCriarDto empresa) {
-        empresaRepository.editarEmpresa(id, empresa.cnpj, empresa.nome);
+    public void editarEmpresa(UUID id, Empresa empresa) {
+        empresaRepository.editarEmpresa(id, empresa.getCnpj(), empresa.getNome());
     }
 
     public void deletarEmpresa(UUID id) {

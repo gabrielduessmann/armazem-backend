@@ -2,9 +2,7 @@ package com.armazem.alocacoes;
 
 import com.armazem.empresas.Empresa;
 import com.armazem.estoques.Estoque;
-import com.armazem.produtos.Produto;
 import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

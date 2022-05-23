@@ -21,7 +21,7 @@ public class EmpresaController {
     private final String EMPRESAS_URL = "empresas";
 
     @PostMapping(EMPRESAS_URL+"/criar")
-    public ResponseEntity<Void> criarEmpresa(@RequestBody EmpresaCriarDto empresa) {
+    public ResponseEntity<Void> criarEmpresa(@RequestBody Empresa empresa) {
         empresaService.criarEmpresa(empresa);
         return ResponseEntity.noContent().build();
     }
@@ -37,7 +37,7 @@ public class EmpresaController {
     }
 
     @PostMapping(EMPRESAS_URL+"/{id}/editar")
-    public ResponseEntity<Void> editarEmpresa(@PathVariable UUID id, @RequestBody EmpresaCriarDto empresa) {
+    public ResponseEntity<Void> editarEmpresa(@PathVariable UUID id, @RequestBody Empresa empresa) {
         empresaService.editarEmpresa(id, empresa);
         return ResponseEntity.noContent().build();
     }
