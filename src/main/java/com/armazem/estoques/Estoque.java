@@ -1,16 +1,13 @@
 package com.armazem.estoques;
 
 import com.armazem.galpoes.Galpao;
-import com.armazem.produtos.Produto;
 import lombok.Data;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import java.util.Date;
-import java.util.Set;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.UUID;
 
 @Data
@@ -18,15 +15,15 @@ import java.util.UUID;
 public class Estoque {
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID estoqueId;
 
-    private Integer quantidade;
+    private String setor;
 
-    private Date ultimaatualizacao;
+    @Column(nullable = false)
+    private Integer capacidade;
 
-    @OneToOne
-    private Galpao galpoes;
+    @ManyToOne
+    @JoinColumn(name = "galpao_id")
+    private Galpao galpao;
 
-//    @ManyToMany
-//    private Set<Produto> produtos;
 }

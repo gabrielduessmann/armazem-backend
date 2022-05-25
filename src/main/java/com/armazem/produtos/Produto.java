@@ -1,10 +1,9 @@
 package com.armazem.produtos;
 
 import lombok.Data;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.UUID;
 
@@ -12,12 +11,12 @@ import java.util.UUID;
 @Entity
 public class Produto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue
+    private UUID produtoId;
 
+    @Column(nullable = false)
     private String nome;
 
     private String descricao;
 
-    private Double precocompra;
 }

@@ -1,11 +1,10 @@
 package com.armazem.galpoes;
 
-import com.armazem.enderecos.Endereco;
 import lombok.Data;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import java.util.UUID;
 
 @Data
@@ -13,12 +12,24 @@ import java.util.UUID;
 public class Galpao {
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID galpaoId;
 
-    private String codigo;
+    @Column(nullable = false)
+    private String nome;
 
-    private Integer capacidade;
+    private String descricao;
 
-    @OneToOne
-    private Endereco endereco;
+    @Column(nullable = false)
+    private String cidade;
+
+    @Column(nullable = false)
+    private String bairro;
+
+    @Column(nullable = false)
+    private String rua;
+
+    @Column(nullable = false)
+    private Integer numero;
+
+    private String complemento;
 }
