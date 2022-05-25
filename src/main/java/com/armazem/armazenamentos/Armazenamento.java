@@ -5,8 +5,8 @@ import com.armazem.produtos.Produto;
 import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
@@ -16,6 +16,7 @@ import java.util.UUID;
 @Entity
 public class Armazenamento {
     @Id
+    @GeneratedValue
     private UUID armazenamentoId;
 
     @ManyToOne
