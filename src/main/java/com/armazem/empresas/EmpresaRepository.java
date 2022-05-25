@@ -14,7 +14,7 @@ public interface EmpresaRepository extends CrudRepository<Empresa, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO empresa VALUES (:id, :cnpj, :nome)", nativeQuery = true)
+    @Query(value = "INSERT INTO empresa (empresa_id, cnpj, nome) VALUES (:id, :cnpj, :nome)", nativeQuery = true)
     public void criarEmpresa(@Param("id") UUID id, @Param("cnpj") String cnpj, @Param("nome") String nome);
 
     @Query(value = "SELECT * FROM empresa", nativeQuery = true)

@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.Tuple;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,8 +16,8 @@ public interface ArmazenamentoRepository extends CrudRepository<Armazenamento, U
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO armazenamento VALUES (:estoqueId, :produtoId, :quantidade, :ultimaAtualizacao)", nativeQuery = true)
-    public void adicionarArmazenamento(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
+    @Query(value = "INSERT INTO armazenamento (armazenamento_id, estoque_id, produto_id, quantidade, ultimaatualizacao) VALUES (:armazenamentoId, :estoqueId, :produtoId, :quantidade, :ultimaAtualizacao)", nativeQuery = true)
+    public void adicionarArmazenamento(@Param("armazenamentoId") UUID armazenamentoId, @Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
 
     @Query(value = "SELECT CAST(a.estoque_id AS VARCHAR) AS estoqueid, CAST(a.produto_id AS VARCHAR) AS produtoid, g.nome AS nomegalpao, e.setor AS setorestoque, p.nome AS nomeproduto, p.descricao \n" +
             "FROM armazenamento a\n" +
@@ -32,16 +31,16 @@ public interface ArmazenamentoRepository extends CrudRepository<Armazenamento, U
             "JOIN produto p ON p.produto_id = a.produto_id \n" +
             "JOIN estoque e ON e.estoque_id = a.estoque_id \n" +
             "JOIN galpao g ON g.galpao_id = e.galpao_id\n" +
-            "WHERE a.estoque_id = :estoqueId AND a.produto_id = :produtoId; ", nativeQuery = true)
-    public Tuple listarArmazenamentosPorId(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId);
+            "WHERE a.armazenamento_id = :armazenamentoId ", nativeQuery = true)
+    public Tuple listarArmazenamentosPorId(@Param("armazenamentoId") UUID armazenamentoId);
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE armazenamento SET estoque_id = :novoEstoqueId, produto_id = :novoProdutoId, quantidade = :quantidade, ultimaatualizacao = :ultimaAtualizacao WHERE estoque_id = :estoqueId AND produto_id = :produtoId", nativeQuery = true)
-    public void editarArmazenamento(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("estoqueId") UUID novoEstoqueId, @Param("produtoId") UUID novoProdutoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
+    @Query(value = "UPDATE armazenamento SET estoque_id = :estoqueId, produto_id = :produtoId, quantidade = :quantidade, ultimaatualizacao = :ultimaAtualizacao WHERE armazenamento_id = :armazenamentoId", nativeQuery = true)
+    public void editarArmazenamento(@Param("armazenamentoId") UUID armazenamentoId, @Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId, @Param("quantidade") Integer quantidade, @Param("ultimaAtualizacao") LocalDate ultimaAtualizacao);
 
     @Transactional
     @Modifying
-    @Query(value = "DELETE FROM armazenamento WHERE estoque_id = :estoqueId AND produto_id = :produtoId", nativeQuery = true)
-    public void deletarArmazenamento(@Param("estoqueId") UUID estoqueId, @Param("produtoId") UUID produtoId);
+    @Query(value = "DELETE FROM armazenamento WHERE armazenamento_id = :armazenamentoId", nativeQuery = true)
+    public void deletarArmazenamento(@Param("armazenamentoId") UUID armazenamentoId);
 }

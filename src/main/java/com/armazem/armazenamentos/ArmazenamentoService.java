@@ -20,7 +20,8 @@ public class ArmazenamentoService {
 
     public void adicionarArmazenamento(ArmazenamentoAdicionarDto armazenamento) {
         LocalDate dataAtual = LocalDate.now();
-        armazenamentoRepository.adicionarArmazenamento(armazenamento.estoqueId, armazenamento.produtoId, armazenamento.quantidade, dataAtual);
+        UUID armazenamentoId = UUID.randomUUID();
+        armazenamentoRepository.adicionarArmazenamento(armazenamentoId, armazenamento.estoqueId, armazenamento.produtoId, armazenamento.quantidade, dataAtual);
     }
 
     public ArrayList<ArmazenamentoListarDto> listarArmazenamentos() {
@@ -28,20 +29,20 @@ public class ArmazenamentoService {
         return convertToArmazenamentoListarDto(tuplas);
     }
 
-    public ArmazenamentoListarDto listarArmazenamentosPorId(UUID estoqueId, UUID produtoId) {
-        Tuple tupla = armazenamentoRepository.listarArmazenamentosPorId(estoqueId, produtoId);
+    public ArmazenamentoListarDto listarArmazenamentosPorId(UUID armazenamentoId) {
+        Tuple tupla = armazenamentoRepository.listarArmazenamentosPorId(armazenamentoId);
         return convertToArmazenamentoListarDto(List.of(tupla)).size() == 1 ?
                 convertToArmazenamentoListarDto(List.of(tupla)).get(0) :
                 null;
     }
 
-    public void editarArmazenamento(UUID estoqueId, UUID produtoId, ArmazenamentoAdicionarDto armazenamento) {
+    public void editarArmazenamento(UUID armazenamentoId, ArmazenamentoAdicionarDto armazenamento) {
         LocalDate dataAtual = LocalDate.now();
-        armazenamentoRepository.editarArmazenamento(estoqueId, produtoId, armazenamento.estoqueId, armazenamento.produtoId, armazenamento.quantidade, dataAtual);
+        armazenamentoRepository.editarArmazenamento(armazenamentoId, armazenamento.estoqueId, armazenamento.produtoId, armazenamento.quantidade, dataAtual);
     }
 
-    public void deletarArmazenamento(UUID estoqueId, UUID produtoId) {
-        armazenamentoRepository.deletarArmazenamento(estoqueId, produtoId);
+    public void deletarArmazenamento(UUID armazenamentoId) {
+        armazenamentoRepository.deletarArmazenamento(armazenamentoId);
     }
 
     private ArrayList<ArmazenamentoListarDto> convertToArmazenamentoListarDto(List<Tuple> tuplas) {

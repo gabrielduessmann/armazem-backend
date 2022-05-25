@@ -1,7 +1,5 @@
 package com.armazem.alocacoes;
 
-import com.armazem.alocacoes.dto.AlocacaoListarDto;
-import com.armazem.empresas.Empresa;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +14,7 @@ import java.util.UUID;
 public interface AlocacaoRepository extends CrudRepository<Alocacao, UUID> {
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO alocacao VALUES (:id, :estoqueId, :empresaId, :dataInicial, :dataFinal)", nativeQuery = true)
+    @Query(value = "INSERT INTO alocacao (alocacao_id, estoque_id, empresa_id, datainicial, datafinal) VALUES (:id, :estoqueId, :empresaId, :dataInicial, :dataFinal)", nativeQuery = true)
     public void adicionarAlocacao(@Param("id") UUID id, @Param("estoqueId") UUID estoqueId, @Param("empresaId") UUID empresaId, @Param("dataInicial") LocalDate dataInicial, @Param("dataFinal") LocalDate dataFinal);
 
     @Query(

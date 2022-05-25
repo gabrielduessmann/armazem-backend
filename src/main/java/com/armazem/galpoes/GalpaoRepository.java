@@ -16,7 +16,7 @@ public interface GalpaoRepository extends CrudRepository<Galpao, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO galpao VALUES (:id, :nome, :descricao, :cidade, :bairro, :rua, :numero, :complemento)", nativeQuery = true)
+    @Query(value = "INSERT INTO galpao (galpao_id, nome, descricao, cidade, bairro, rua, numero, complemento) VALUES (:id, :nome, :descricao, :cidade, :bairro, :rua, :numero, :complemento)", nativeQuery = true)
     public void criarGalpao(@Param("id") UUID id, @Param("nome") String nome, @Param("descricao") String descricao, @Param("cidade") String cidade, @Param("bairro") String bairro, @Param("rua") String rua, @Param("numero") Integer numero, @Param("complemento") String complemento);
 
     @Query(value = "SELECT * FROM galpao", nativeQuery = true)

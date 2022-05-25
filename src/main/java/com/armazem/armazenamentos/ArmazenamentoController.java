@@ -34,20 +34,20 @@ public class ArmazenamentoController {
         return ResponseEntity.ok(armazenamentoService.listarArmazenamentos());
     }
 
-    @GetMapping(ARMAZENAMENTOS_URL+"/{estoqueId}/{produtoId}/listar")
-    public ResponseEntity<ArmazenamentoListarDto> listarAlocacoesPorId(@PathVariable UUID estoqueId, @PathVariable UUID produtoId) {
-        return ResponseEntity.ok(armazenamentoService.listarArmazenamentosPorId(estoqueId, produtoId));
+    @GetMapping(ARMAZENAMENTOS_URL+"/{armazenamentoId}/listar")
+    public ResponseEntity<ArmazenamentoListarDto> listarAlocacoesPorId(@PathVariable UUID armazenamentoId) {
+        return ResponseEntity.ok(armazenamentoService.listarArmazenamentosPorId(armazenamentoId));
     }
 
-    @PostMapping(ARMAZENAMENTOS_URL+"/{estoqueId}/{produtoId}/editar")
-    public ResponseEntity<Void> editarAlocacao(@PathVariable UUID estoqueId, @PathVariable UUID produtoId, @RequestBody ArmazenamentoAdicionarDto armazenamento) {
-        armazenamentoService.editarArmazenamento(estoqueId, produtoId, armazenamento);
+    @PostMapping(ARMAZENAMENTOS_URL+"/{armazenamentoId}/editar")
+    public ResponseEntity<Void> editarAlocacao(@PathVariable UUID armazenamentoId, @RequestBody ArmazenamentoAdicionarDto armazenamento) {
+        armazenamentoService.editarArmazenamento(armazenamentoId, armazenamento);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(ARMAZENAMENTOS_URL+"/{estoqueId}/{produtoId}/remover")
-    public ResponseEntity<Void> deletarAlocacao(@PathVariable UUID estoqueId, @PathVariable UUID produtoId) {
-        armazenamentoService.deletarArmazenamento(estoqueId, produtoId);
+    @DeleteMapping(ARMAZENAMENTOS_URL+"/{armazenamentoId}/remover")
+    public ResponseEntity<Void> deletarAlocacao(@PathVariable UUID armazenamentoId) {
+        armazenamentoService.deletarArmazenamento(armazenamentoId);
         return ResponseEntity.noContent().build();
     }
 }

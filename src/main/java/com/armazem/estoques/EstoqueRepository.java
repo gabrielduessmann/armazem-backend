@@ -6,7 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.Tuple;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public interface EstoqueRepository extends CrudRepository<Estoque, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO estoque VALUES (:id, :setor, :capacidade, :galpaoId)", nativeQuery = true)
+    @Query(value = "INSERT INTO estoque (estoque_id, setor, capacidade, galpao_id) VALUES (:id, :setor, :capacidade, :galpaoId)", nativeQuery = true)
     public void criarEstoque(@Param("id") UUID id, @Param("setor") String setor, @Param("capacidade") Integer capacidade, @Param("galpaoId") UUID galpaoId);
 
     @Query(value = "SELECT * FROM estoque", nativeQuery = true)

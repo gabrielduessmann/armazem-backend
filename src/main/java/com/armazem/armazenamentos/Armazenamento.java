@@ -10,17 +10,18 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Entity
-@IdClass(ArmazenamentoPKs.class)
 public class Armazenamento {
     @Id
+    private UUID armazenamentoId;
+
     @ManyToOne
     @JoinColumn(name="estoque_id", referencedColumnName = "estoqueId")
     private Estoque estoque;
 
-    @Id
     @ManyToOne
     @JoinColumn(name="produto_id", referencedColumnName = "produtoId")
     private Produto produto;

@@ -15,7 +15,7 @@ public interface ProdutoRepository extends CrudRepository<Produto, UUID> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO produto values (:id, :nome, :descricao)", nativeQuery = true)
+    @Query(value = "INSERT INTO produto (produto_id, nome, descricao) values (:id, :nome, :descricao)", nativeQuery = true)
     public void criaProduto(@Param("id") UUID id, @Param("nome") String nome, @Param("descricao") String descricao);
 
     @Query(value = "SELECT * FROM produto", nativeQuery = true)
