@@ -4,9 +4,9 @@ import lombok.Builder;
 
 @Builder
 public class ArmazenamentoListarDto {
-    public String estoqueid;
+    public String armazenamentoId;
 
-    public String produtoid;
+    public String quantidade;
 
     public String nomegalpao;
 

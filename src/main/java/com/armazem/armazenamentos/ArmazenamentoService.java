@@ -50,8 +50,8 @@ public class ArmazenamentoService {
         tuplas.forEach(tupla -> {
             armazenamentosDto.add(
                     ArmazenamentoListarDto.builder()
-                            .estoqueid(obterValorTupla(tupla.get("estoqueid")))
-                            .produtoid(obterValorTupla(tupla.get("produtoid")))
+                            .armazenamentoId(obterValorTupla(tupla.get("armazenamentoId")))
+                            .quantidade(obterValorTupla(tupla.get("quantidade")))
                             .nomegalpao(obterValorTupla(tupla.get("nomegalpao")))
                             .setorestoque(obterValorTupla(tupla.get("setorestoque")))
                             .nomeproduto(obterValorTupla(tupla.get("nomeproduto")))
