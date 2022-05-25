@@ -28,8 +28,8 @@ public interface EstoqueRepository extends CrudRepository<Estoque, UUID> {
     @Query(value = "SELECT DISTINCT CAST(e.estoque_id AS VARCHAR) AS estoqueid, e.setor AS setorestoque, g.nome AS nomegalpao \n" +
             "FROM estoque e\n" +
             "JOIN galpao g on g.galpao_id = e.galpao_id\n" +
-            "LEFT JOIN alocacao a ON a.estoque_id = e.estoque_id\n" +
-            "WHERE a.empresa_id IS NULL OR a.datafinal > :dataFinal", nativeQuery = true)
+            "LEFT JOIN alocacao a ON a.estoque_id = e.estoque_id AND a.datafinal > :dataFinal\n" +
+            "WHERE a.empresa_id IS NULL", nativeQuery = true)
     public ArrayList<Tuple> listarEstoquesDisponiveis(@Param("dataFinal") LocalDate dataFinal);
 
     @Transactional
