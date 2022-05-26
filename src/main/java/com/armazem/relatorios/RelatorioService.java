@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.Tuple;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -29,7 +30,11 @@ public class RelatorioService {
         return convertToRelatorioEstoquesAtivosListagemDto(tuplas);
     }
 
-    public ArrayList<RelatorioHistoricoEstoquesListagemDto> listarHistoricoEstoques(UUID empresaId, LocalDate dataInicial, LocalDate dataFinal) {
+    public ArrayList<RelatorioHistoricoEstoquesListagemDto> listarHistoricoEstoques(UUID empresaId, String dataInicialFiltro, String dataFinalFiltro) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        LocalDate dataInicial = LocalDate.parse(dataInicialFiltro);
+        LocalDate dataFinal = LocalDate.parse(dataFinalFiltro);
+        System.out.println(dataFinal);
         ArrayList<Tuple> tuplas = relatorioRepository.listarHistoricoEstoques(empresaId, dataInicial, dataFinal);
         return convertToRelatorioHistoricoEstoquesListagemDto(tuplas);
     }

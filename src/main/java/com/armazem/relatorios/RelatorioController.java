@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -35,7 +36,7 @@ public class RelatorioController {
     }
 
     @GetMapping(RELATORIOS_URL+"/historicoEstoques/{empresaId}/listar")
-    public ResponseEntity<ArrayList<RelatorioHistoricoEstoquesListagemDto>> listarHistoricoEstoques(@PathVariable UUID empresaId) {
-        return ResponseEntity.ok(relatorioService.listarHistoricoEstoques(empresaId, LocalDate.now().minusYears(1), LocalDate.now()));
+    public ResponseEntity<ArrayList<RelatorioHistoricoEstoquesListagemDto>> listarHistoricoEstoques(@PathVariable UUID empresaId, @RequestParam(value = "dataInicial") String dataInicial, @RequestParam(value = "dataFinal") String dataFinal) {
+        return ResponseEntity.ok(relatorioService.listarHistoricoEstoques(empresaId, dataInicial, dataFinal));
     }
 }

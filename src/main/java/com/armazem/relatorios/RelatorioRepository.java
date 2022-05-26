@@ -39,6 +39,7 @@ public interface RelatorioRepository extends CrudRepository<Produto, UUID> {
     @Query(
             value = "SELECT g.nome AS nomegalpao, es.setor AS setorestoque\n" +
                     "FROM alocacao a\n" +
+                    "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id\n" +
                     "JOIN galpao g ON es.galpao_id = g.galpao_id\n" +
                     "WHERE e.empresa_id = :empresaId AND a.datafinal BETWEEN :dataInicial AND :dataFinal",
