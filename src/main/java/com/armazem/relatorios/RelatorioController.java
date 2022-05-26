@@ -38,7 +38,7 @@ public class RelatorioController {
 
     @GetMapping(RELATORIOS_URL+"/historicoEstoques/{empresaId}/listar")
     public ResponseEntity<ArrayList<RelatorioHistoricoEstoquesListagemDto>> listarHistoricoEstoques(@PathVariable UUID empresaId, @RequestParam(value = "dataInicial") String dataInicial, @RequestParam(value = "dataFinal") String dataFinal) {
-        if (dataInicial == null || dataFinal == null) ResponseEntity.internalServerError();
+        if (dataInicial == null || dataInicial.equals("") || dataFinal == null || dataFinal.equals("")) ResponseEntity.internalServerError();
         return ResponseEntity.ok(relatorioService.listarHistoricoEstoques(empresaId, dataInicial, dataFinal));
     }
 }

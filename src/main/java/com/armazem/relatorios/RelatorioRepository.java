@@ -42,7 +42,7 @@ public interface RelatorioRepository extends CrudRepository<Produto, UUID> {
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id\n" +
                     "JOIN galpao g ON es.galpao_id = g.galpao_id\n" +
-                    "WHERE e.empresa_id = :empresaId AND a.datafinal BETWEEN :dataInicial AND :dataFinal",
+                    "WHERE e.empresa_id = :empresaId AND a.datainicial >= :dataInicial AND a.datafinal <= :dataFinal",
             nativeQuery = true
     )
     public ArrayList<Tuple> listarHistoricoEstoques(@Param("empresaId") UUID empresaId, @Param("dataInicial") LocalDate dataInicial, @Param("dataFinal") LocalDate dataFinal);

@@ -33,7 +33,6 @@ public class RelatorioService {
     public ArrayList<RelatorioHistoricoEstoquesListagemDto> listarHistoricoEstoques(UUID empresaId, String dataInicialFiltro, String dataFinalFiltro) {
         LocalDate dataInicial = LocalDate.parse(dataInicialFiltro);
         LocalDate dataFinal = LocalDate.parse(dataFinalFiltro);
-        System.out.println(dataFinal);
         ArrayList<Tuple> tuplas = relatorioRepository.listarHistoricoEstoques(empresaId, dataInicial, dataFinal);
         return convertToRelatorioHistoricoEstoquesListagemDto(tuplas);
     }
