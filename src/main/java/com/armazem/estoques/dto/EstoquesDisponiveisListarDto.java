@@ -4,7 +4,7 @@ import lombok.Builder;
 
 @Builder
 public class EstoquesDisponiveisListarDto {
-    public String estoqueid;
+    public String estoqueId;
 
     public String nomegalpao;
 

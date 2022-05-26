@@ -37,7 +37,7 @@ public interface RelatorioRepository extends CrudRepository<Produto, UUID> {
     public ArrayList<Tuple> listarEstoquesAtivos(@Param("dataAtual") LocalDate dataAtual);
 
     @Query(
-            value = "SELECT g.nome AS nomegalpao, es.setor AS setorestoque\n" +
+            value = "SELECT g.nome AS nomegalpao, es.setor AS setorestoque, a.datainicial, a.datafinal\n" +
                     "FROM alocacao a\n" +
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id\n" +

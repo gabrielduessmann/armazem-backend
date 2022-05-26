@@ -54,7 +54,9 @@ public class ArmazenamentoService {
                             .quantidade(obterValorTupla(tupla.get("quantidade")))
                             .nomegalpao(obterValorTupla(tupla.get("nomegalpao")))
                             .setorestoque(obterValorTupla(tupla.get("setorestoque")))
+                            .estoqueId(obterValorTupla(tupla.get("estoqueId")))
                             .nomeproduto(obterValorTupla(tupla.get("nomeproduto")))
+                            .produtoId(obterValorTupla(tupla.get("produtoId")))
                             .descricao(obterValorTupla(tupla.get("descricao")))
                             .build()
             );

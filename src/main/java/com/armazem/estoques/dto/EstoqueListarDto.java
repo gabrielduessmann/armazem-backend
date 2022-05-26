@@ -8,7 +8,7 @@ public class EstoqueListarDto {
 
     public String nomegalpao;
 
-    public String setor;
+    public String setorestoque;
 
     public String capacidade;
 }

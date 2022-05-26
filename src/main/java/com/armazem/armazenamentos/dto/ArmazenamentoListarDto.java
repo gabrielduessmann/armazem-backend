@@ -12,7 +12,11 @@ public class ArmazenamentoListarDto {
 
     public String setorestoque;
 
+    public String estoqueId;
+
     public String nomeproduto;
+
+    public String produtoId;
 
     public String descricao;
 }

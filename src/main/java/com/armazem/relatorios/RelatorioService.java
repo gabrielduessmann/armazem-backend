@@ -76,6 +76,8 @@ public class RelatorioService {
                     RelatorioHistoricoEstoquesListagemDto.builder()
                             .nomegalpao(obterValorTupla(tupla.get("nomegalpao")))
                             .setorestoque(obterValorTupla(tupla.get("setorestoque")))
+                            .datainicial(obterValorTupla(tupla.get("datainicial")))
+                            .datafinal(obterValorTupla(tupla.get("datafinal")))
                             .build()
             );
         });

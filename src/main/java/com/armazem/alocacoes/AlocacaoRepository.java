@@ -18,7 +18,7 @@ public interface AlocacaoRepository extends CrudRepository<Alocacao, UUID> {
     public void adicionarAlocacao(@Param("id") UUID id, @Param("estoqueId") UUID estoqueId, @Param("empresaId") UUID empresaId, @Param("dataInicial") LocalDate dataInicial, @Param("dataFinal") LocalDate dataFinal);
 
     @Query(
-            value = "SELECT CAST(a.alocacao_id AS VARCHAR) AS alocacaoid, g.nome AS nomegalpao, es.setor AS setorestoque, e.nome AS nomeempresa, a.datainicial, a.datafinal " +
+            value = "SELECT CAST(a.alocacao_id AS VARCHAR) AS alocacaoid, CAST(e.empresa_id AS VARCHAR) AS empresaid, CAST(es.estoque_id AS VARCHAR) AS estoqueid, g.nome AS nomegalpao, es.setor AS setorestoque, e.nome AS nomeempresa, a.datainicial, a.datafinal " +
                     "FROM alocacao a \n" +
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id \n" +
@@ -27,7 +27,7 @@ public interface AlocacaoRepository extends CrudRepository<Alocacao, UUID> {
     public ArrayList<Tuple> listarAlocacoes();
 
     @Query(
-            value = "SELECT CAST(a.alocacao_id AS VARCHAR) AS alocacaoid, g.nome AS nomegalpao, es.setor AS setorestoque, e.nome AS nomeempresa, a.datainicial, a.datafinal " +
+            value = "SELECT CAST(a.alocacao_id AS VARCHAR) AS alocacaoid, CAST(e.empresa_id AS VARCHAR) AS empresaid, CAST(es.estoque_id AS VARCHAR) AS estoqueid, g.nome AS nomegalpao, es.setor AS setorestoque, e.nome AS nomeempresa, a.datainicial, a.datafinal " +
                     "FROM alocacao a \n" +
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id \n" +

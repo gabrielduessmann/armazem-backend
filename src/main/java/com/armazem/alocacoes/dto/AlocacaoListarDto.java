@@ -10,7 +10,11 @@ public class AlocacaoListarDto {
 
     public String setorestoque;
 
+    public String estoqueid;
+
     public String nomeempresa;
+
+    public String empresaid;
 
     public String datainicial;
 

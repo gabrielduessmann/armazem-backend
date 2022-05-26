@@ -1,14 +1,11 @@
 package com.armazem.estoques;
 
-import com.armazem.alocacoes.dto.AlocacaoListarDto;
 import com.armazem.estoques.dto.EstoqueCriarDto;
 import com.armazem.estoques.dto.EstoqueListarDto;
 import com.armazem.estoques.dto.EstoquesDisponiveisListarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.Tuple;
-import java.lang.reflect.Array;
+import javax.persistence.Tuple;;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -32,7 +29,7 @@ public class EstoqueService {
                     .builder()
                     .estoqueId(e.getEstoqueId().toString())
                     .nomegalpao(e.getGalpao().getNome())
-                    .setor(e.getSetor())
+                    .setorestoque(e.getSetor())
                     .capacidade(e.getCapacidade().toString())
                     .build()
             );
@@ -63,7 +60,7 @@ public class EstoqueService {
         tuplas.forEach(tupla -> {
             estoquesDisponiveisDto.add(
                     EstoquesDisponiveisListarDto.builder()
-                            .estoqueid(obterValorTupla(tupla.get("estoqueid")))
+                            .estoqueId(obterValorTupla(tupla.get("estoqueid")))
                             .nomegalpao(obterValorTupla(tupla.get("nomegalpao")))
                             .setorestoque(obterValorTupla(tupla.get("setorestoque")))
                             .build()

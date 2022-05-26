@@ -27,6 +27,7 @@ public class RelatorioController {
 
     @GetMapping(RELATORIOS_URL+"/produtosArmazenados/{empresaId}/listar")
     public ResponseEntity<ArrayList<RelatorioProdutosArmazenadosListagemDto>> listarProdutosArmazenados(@PathVariable UUID empresaId) {
+        if (empresaId == null) ResponseEntity.internalServerError();
         return ResponseEntity.ok(relatorioService.listarProdutosArmazenados(empresaId));
     }
 
@@ -37,6 +38,7 @@ public class RelatorioController {
 
     @GetMapping(RELATORIOS_URL+"/historicoEstoques/{empresaId}/listar")
     public ResponseEntity<ArrayList<RelatorioHistoricoEstoquesListagemDto>> listarHistoricoEstoques(@PathVariable UUID empresaId, @RequestParam(value = "dataInicial") String dataInicial, @RequestParam(value = "dataFinal") String dataFinal) {
+        if (dataInicial == null || dataFinal == null) ResponseEntity.internalServerError();
         return ResponseEntity.ok(relatorioService.listarHistoricoEstoques(empresaId, dataInicial, dataFinal));
     }
 }
