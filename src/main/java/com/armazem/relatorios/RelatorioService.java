@@ -31,7 +31,6 @@ public class RelatorioService {
     }
 
     public ArrayList<RelatorioHistoricoEstoquesListagemDto> listarHistoricoEstoques(UUID empresaId, String dataInicialFiltro, String dataFinalFiltro) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         LocalDate dataInicial = LocalDate.parse(dataInicialFiltro);
         LocalDate dataFinal = LocalDate.parse(dataFinalFiltro);
         System.out.println(dataFinal);
