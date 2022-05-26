@@ -22,7 +22,7 @@ public interface AlocacaoRepository extends CrudRepository<Alocacao, UUID> {
                     "FROM alocacao a \n" +
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id \n" +
-                    "JOIN galpao g ON es.galpao_id = g.galpao_id;",
+                    "JOIN galpao g ON es.galpao_id = g.galpao_id",
             nativeQuery = true)
     public ArrayList<Tuple> listarAlocacoes();
 
@@ -31,8 +31,8 @@ public interface AlocacaoRepository extends CrudRepository<Alocacao, UUID> {
                     "FROM alocacao a \n" +
                     "JOIN empresa e ON a.empresa_id = e.empresa_id\n" +
                     "JOIN estoque es ON a.estoque_id = es.estoque_id \n" +
-                    "JOIN galpao g ON es.galpao_id = g.galpao_id" +
-                    "WHERE alocacao_id = :id",
+                    "JOIN galpao g ON es.galpao_id = g.galpao_id \n" +
+                    "WHERE a.alocacao_id = :id",
             nativeQuery = true)
     public Tuple listarAlocacoesPorId(@Param("id") UUID id);
 

@@ -2,11 +2,13 @@ package com.armazem.estoques;
 
 import com.armazem.alocacoes.dto.AlocacaoListarDto;
 import com.armazem.estoques.dto.EstoqueCriarDto;
+import com.armazem.estoques.dto.EstoqueListarDto;
 import com.armazem.estoques.dto.EstoquesDisponiveisListarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.Tuple;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -21,8 +23,21 @@ public class EstoqueService {
         estoqueRepository.criarEstoque(UUID.randomUUID(), estoque.setor, estoque.capacidade, estoque.galpaoId);
     }
 
-    public ArrayList<Estoque> listarEstoques() {
-        return estoqueRepository.listarEstoques();
+    public ArrayList<EstoqueListarDto> listarEstoques() {
+        ArrayList<Estoque> estoqueListar = estoqueRepository.listarEstoques();
+        ArrayList<EstoqueListarDto> estoqueListarDto = new ArrayList<>();
+        estoqueListar.forEach(e -> {
+            estoqueListarDto.add(
+            EstoqueListarDto
+                    .builder()
+                    .estoqueId(e.getEstoqueId().toString())
+                    .nomegalpao(e.getGalpao().getNome())
+                    .setor(e.getSetor())
+                    .capacidade(e.getCapacidade().toString())
+                    .build()
+            );
+        });
+        return estoqueListarDto;
     }
 
     public Estoque listarEstoquesPorId(UUID id) {

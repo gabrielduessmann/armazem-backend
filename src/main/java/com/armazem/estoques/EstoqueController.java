@@ -1,6 +1,7 @@
 package com.armazem.estoques;
 
 import com.armazem.estoques.dto.EstoqueCriarDto;
+import com.armazem.estoques.dto.EstoqueListarDto;
 import com.armazem.estoques.dto.EstoquesDisponiveisListarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class EstoqueController {
     }
 
     @GetMapping(ESTOQUES_URL+"/listar")
-    public ResponseEntity<ArrayList<Estoque>> listarEstoques() {
+    public ResponseEntity<ArrayList<EstoqueListarDto>> listarEstoques() {
         return ResponseEntity.ok(estoqueService.listarEstoques());
     }
 

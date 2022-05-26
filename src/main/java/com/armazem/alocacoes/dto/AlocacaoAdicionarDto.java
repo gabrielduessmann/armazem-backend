@@ -11,7 +11,7 @@ public class AlocacaoAdicionarDto {
 
     public UUID empresaId;
 
-    public LocalDate dataInicial;
+    public LocalDate datainicial;
 
-    public LocalDate dataFinal;
+    public LocalDate datafinal;
 }

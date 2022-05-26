@@ -17,7 +17,7 @@ public class AlocacaoService {
     private AlocacaoRepository alocacaoRepository;
 
     public void adicionarAlocacao(AlocacaoAdicionarDto alocacao) {
-        alocacaoRepository.adicionarAlocacao(UUID.randomUUID(), alocacao.estoqueId, alocacao.empresaId, alocacao.dataInicial, alocacao.dataFinal);
+        alocacaoRepository.adicionarAlocacao(UUID.randomUUID(), alocacao.estoqueId, alocacao.empresaId, alocacao.datainicial, alocacao.datafinal);
     }
 
     public ArrayList<AlocacaoListarDto> listarAlocacoes() {
@@ -33,7 +33,7 @@ public class AlocacaoService {
     }
 
     public void editarAlocacao(UUID id, AlocacaoAdicionarDto alocacao) {
-        alocacaoRepository.editarAlocacao(id, alocacao.estoqueId, alocacao.empresaId, alocacao.dataInicial, alocacao.dataFinal);
+        alocacaoRepository.editarAlocacao(id, alocacao.estoqueId, alocacao.empresaId, alocacao.datainicial, alocacao.datafinal);
     }
 
     public void deletarAlocacao(UUID id) {
