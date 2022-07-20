@@ -21,3 +21,6 @@ $ mvn spring-boot:run
 
 * Criar um banco de dados com o seguinte nome: `armazem`. O framework Hibernate irá gerar as tabelas do banco aumaticamente ao rodar o projeto.
 * Configurar usuario, senha, ip, host and nome do banco de dados no arquivo: `src/main/resources/application,properties`
+
+## Front-end project
+https://github.com/cristianslv/vue-stock-system
